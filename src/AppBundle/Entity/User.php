@@ -7,14 +7,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
- * @ORM\Table(name="Person")
+ * @ORM\Table(name="Usuario")
  * @UniqueEntity("email")
  */
 class User extends BaseUser
 {
-    const GENDER_UNKNOWN = 0;
-    const GENDER_MALE = 1;
-    const GENDER_FEMALE = 2;
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -76,10 +73,7 @@ class User extends BaseUser
      * @var string
      */
     protected $email;
-    public function __construct()
-    {
-        $this->gender = self::GENDER_UNKNOWN;
-    }
+
     /**
      * Returns the person's display name
      *
