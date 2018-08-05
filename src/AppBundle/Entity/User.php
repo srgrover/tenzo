@@ -33,12 +33,12 @@ class User extends BaseUser
      */
     protected $lastName;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=false)
      * @var int
      */
     protected $gender;
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=false)
      * @var string
      */
     protected $displayName;
@@ -48,7 +48,7 @@ class User extends BaseUser
      */
     protected $address;
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=false)
      * @var string
      */
     protected $city;
@@ -63,16 +63,22 @@ class User extends BaseUser
      */
     protected $zipCode;
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=false)
      * @var string
      */
     protected $phoneNumber;
     /**
-     * @ORM\Column(type="string", unique=true, nullable=true)
+     * @ORM\Column(type="string", unique=true, nullable=false)
      * @Assert\Email()
      * @var string
      */
     protected $email;
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @var \DateTime
+     */
+    protected $born;
+
 
     /**
      * Returns the person's display name
@@ -260,5 +266,21 @@ class User extends BaseUser
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getBorn()
+    {
+        return $this->born;
+    }
+
+    /**
+     * @param \DateTime $born
+     */
+    public function setBorn($born)
+    {
+        $this->born = $born;
     }
 }

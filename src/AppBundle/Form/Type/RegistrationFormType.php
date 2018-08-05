@@ -3,7 +3,10 @@
 namespace AppBundle\Form\Type;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseRegistrationFormType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;use Symfony\Component\Form\Extension\Core\Type\RepeatedType;use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegistrationFormType extends AbstractType
@@ -16,9 +19,31 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['placeholder' => 'form.email'],
                 'translation_domain' => 'FOSUserBundle'
             ])
+            ->add('gender', ChoiceType::class, [
+                'label' => 'Género',
+                'choices'  => [
+                    'Hombre' => 1,
+                    'Mujer' => 2,
+                ]])
+            ->add('born', DateType::class, [
+                'label' => false,
+                'format' => 'dd-MM-yyyy',
+                'attr' => ['placeholder' => ''],
+                'translation_domain' => 'FOSUserBundle'
+            ])
             ->add('username', null, [
                 'label' => false,
                 'attr' => ['placeholder' => 'form.username'],
+                'translation_domain' => 'FOSUserBundle'
+            ])
+            ->add('firstName', null, [
+                'label' => false,
+                'attr' => ['placeholder' => 'Nombre'],
+                'translation_domain' => 'FOSUserBundle'
+            ])
+            ->add('lastName', null, [
+                'label' => false,
+                'attr' => ['placeholder' => 'Apellidos'],
                 'translation_domain' => 'FOSUserBundle'
             ])
             ->add('address', null, [
