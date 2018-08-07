@@ -38,7 +38,7 @@ class User extends BaseUser
      */
     protected $gender;
     /**
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="string", nullable=true)
      * @var string
      */
     protected $displayName;
@@ -68,17 +68,10 @@ class User extends BaseUser
      */
     protected $phoneNumber;
     /**
-     * @ORM\Column(type="string", unique=true, nullable=false)
-     * @Assert\Email()
-     * @var string
-     */
-    protected $email;
-    /**
      * @ORM\Column(type="datetime", nullable=false)
      * @var \DateTime
      */
     protected $born;
-
 
     /**
      * Returns the person's display name
@@ -250,22 +243,6 @@ class User extends BaseUser
     public function setPhoneNumber($phoneNumber)
     {
         $this->phoneNumber = $phoneNumber;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
     }
 
     /**

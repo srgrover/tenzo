@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/darkly.min.css') }}">
+    {#<link rel="stylesheet" href="{{ asset('assets/bootstrap/css/darkly.min.css') }}">#}
 
 {% endblock %}
 
@@ -14,38 +14,165 @@
             <h1>TENZO</h1>
         </div>
         <hr>
-        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-        <div class="login-form">
-            <div class="control-group">
-                {{ form_row(form.firstName) }}
-            </div>
-            <div class="control-group">
-                {{ form_row(form.lastName) }}
-            </div>
-            <div class="control-group">
-                {{ form_row(form.email) }}
-            </div>
-            <div class="control-group">
-                {{ form_row(form.username) }}
-            </div>
-            <div class="control-group">
-                {{ form_row(form.plainPassword.pass) }}
-            </div>
-            <div class="control-group">
-                {{ form_row(form.plainPassword.repeat) }}
-            </div>
-        </div>
+        <div class="form-style">
+        <!-- Default form register -->
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register text-center border border-light p-5'}}) }}
 
-        <div>
-            <input class="btn btn-primary btn-large btn-block" type="submit" value="{{ 'registration.submit'|trans }}" />
-        </div>
+            <p class="h4 mb-4">Regístrate</p>
+
+            <div class="form-row mb-4">
+                <div class="col">
+                    <!-- First name -->
+                    {{ form_widget(form.firstName) }}
+                </div>
+                <div class="col">
+                    <!-- Last name -->
+                    {{ form_widget(form.lastName) }}
+                </div>
+            </div>
+
+            <div class="form-row mb-4">
+                <div class="input-group col col-md-7">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div>
+                    <!-- Email -->
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="col col-md-5">
+                    <!-- Username -->
+                    {{ form_widget(form.username) }}
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend">Dirección</span>
+                </div>
+                {{ form_widget(form.address) }}
+            </div>
+            <br>
+            <div class="form-row mb-4">
+                <div class="input-group col col-md-4">
+                    <!-- Email -->
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">Nacimiento</span>
+                    </div>
+                    {{ form_widget(form.born) }}
+                </div>
+
+                <div class="input-group col-md-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">Sexo</span>
+                    </div>
+                    {{ form_widget(form.gender) }}
+                </div>
+                <div class="col col-md-4">
+                    <!-- Username -->
+                    {{ form_widget(form.city) }}
+                </div>
+            </div>
+            {{ form_widget(form.phoneNumber) }}
+            <br>
+
+            <!-- Password -->
+            {{ form_widget(form.plainPassword.pass) }}
+            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                At least 8 characters and 1 digit
+            </small>
+            {{ form_widget(form.plainPassword.repeat) }}
+            <!-- Phone number -->
+            {{ form_widget(form.phoneNumber) }}
+            <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+                Optional - for two step authentication
+            </small>
+
+            <!-- Newsletter -->
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
+                <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
+            </div>
+
+            <!-- Sign up button -->
+            <button class="btn btn-info my-4 btn-block" type="submit">Registrarse</button>
+
+            <!-- Terms of service -->
+            <p>By clicking
+                <em>Sign up</em> you agree to our
+                <a href="" target="_blank">terms of service</a> and
+                <a href="" target="_blank">terms of service</a>.
+            </p>
+
         {{ form_end(form) }}
+        </div>
     </div>
-
-    <div class="login-or">
-        <hr class="registro-hr-or">
-        <span class="registro-span-or">o</span>
-    </div>
-    <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary btn-large btn-block">INICIA SESION</a>
-
 </div>
+
+
+
+{#<!-- Default form register -->#}
+{#<form class="text-center border border-light p-5">#}
+
+    {#<p class="h4 mb-4">Sign up</p>#}
+
+    {#<div class="form-row mb-4">#}
+        {#<div class="col">#}
+            {#<!-- First name -->#}
+            {{ form_widget(form.firstName) }}
+        {#</div>#}
+        {#<div class="col">#}
+            {#<!-- Last name -->#}
+            {{ form_widget(form.lastName) }}
+        {#</div>#}
+    {#</div>#}
+
+    {#<!-- E-mail -->#}
+    {{ form_widget(form.email) }}
+
+    {#<!-- Password -->#}
+    {{ form_widget(form.plainPassword.pass) }}
+    {#<small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">#}
+        {#At least 8 characters and 1 digit#}
+    {#</small>#}
+    {{ form_widget(form.plainPassword.repeat) }}
+
+    {#<!-- Phone number -->#}
+    {{ form_widget(form.phoneNumber) }}
+    {#<small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">#}
+        {#Optional - for two step authentication#}
+    {#</small>#}
+
+    {#<!-- Newsletter -->#}
+    {#<div class="custom-control custom-checkbox">#}
+        {#<input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">#}
+        {#<label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>#}
+    {#</div>#}
+
+    {#<!-- Sign up button -->#}
+    {#<button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>#}
+
+    {#<!-- Social register -->#}
+    {#<p>or sign up with:</p>#}
+
+    {#<a type="button" class="light-blue-text mx-2">#}
+        {#<i class="fa fa-facebook"></i>#}
+    {#</a>#}
+    {#<a type="button" class="light-blue-text mx-2">#}
+        {#<i class="fa fa-twitter"></i>#}
+    {#</a>#}
+    {#<a type="button" class="light-blue-text mx-2">#}
+        {#<i class="fa fa-linkedin"></i>#}
+    {#</a>#}
+    {#<a type="button" class="light-blue-text mx-2">#}
+        {#<i class="fa fa-github"></i>#}
+    {#</a>#}
+
+    {#<hr>#}
+
+    {#<!-- Terms of service -->#}
+    {#<p>By clicking#}
+        {#<em>Sign up</em> you agree to our#}
+        {#<a href="" target="_blank">terms of service</a> and#}
+        {#<a href="" target="_blank">terms of service</a>. </p>#}
+
+{#</form>#}
+{#<!-- Default form register -->#}

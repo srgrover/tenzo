@@ -20,10 +20,10 @@ class RegistrationFormType extends AbstractType
                 'translation_domain' => 'FOSUserBundle'
             ])
             ->add('gender', ChoiceType::class, [
-                'label' => 'Género',
+                'label' => false,
                 'choices'  => [
-                    'Hombre' => 1,
-                    'Mujer' => 2,
+                    'Masculino' => 1,
+                    'Femenino' => 2,
                 ]])
             ->add('born', DateType::class, [
                 'label' => false,
@@ -38,7 +38,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('firstName', null, [
                 'label' => false,
-                'attr' => ['placeholder' => 'Nombre'],
+                'attr' => ['placeholder' => 'Nombre', 'class' => ''],
                 'translation_domain' => 'FOSUserBundle'
             ])
             ->add('lastName', null, [
@@ -48,7 +48,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('address', null, [
                 "label" => false,
-                'attr' => ['placeholder' => 'Dirección'],
+                'attr' => ['placeholder' => 'Nombre de calle, número'],
             ])
             ->add('phoneNumber', null,[
                 "label" => false,
