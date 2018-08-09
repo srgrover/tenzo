@@ -9,11 +9,9 @@
 
 <div class="login">
     <div class="login-screen">
-        <div class="app-title">
-            <h4>REGISTRO</h4>
-            <h1>TENZO</h1>
+        <div class="app-title text-center">
+            <h1>Tenzo <small>Jobs</small> </h1>
         </div>
-        <hr>
         <div class="form-style">
         <!-- Default form register -->
         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register text-center border border-light p-5'}}) }}
@@ -52,7 +50,7 @@
             </div>
             <br>
             <div class="form-row mb-4">
-                <div class="input-group col col-md-4">
+                <div class="input-group col col-md-5">
                     <!-- Email -->
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend">Nacimiento</span>
@@ -66,7 +64,7 @@
                     </div>
                     {{ form_widget(form.gender) }}
                 </div>
-                <div class="col col-md-4">
+                <div class="col col-md-3">
                     <!-- Username -->
                     {{ form_widget(form.city) }}
                 </div>

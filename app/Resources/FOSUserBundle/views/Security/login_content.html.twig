@@ -1,0 +1,53 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/security.css') }}">
+{% endblock %}
+
+{% if error %}
+    <div class="alert alert-danger text-center" style="width: 50%; margin: 0 auto;">
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+    </div>
+{% endif %}
+
+
+<div id="login">
+    <h3 class="text-center text-white pt-5">Tenzo <small>Jobs</small></h3>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form action="{{ path("fos_user_security_check") }}" method="post" class="form" id="login-form">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+                        <h3 class="text-center text-info">Entrar</h3>
+                        <div class="form-group">
+                            <input type="text" class="login-field form-control" id="username" name="_username" placeholder="Correo electronico" value="{{ last_username }}" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password" name="_password" class="login-field form-control" value="" placeholder="Contraseña" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="remember-me" class="text-info">
+                                <span>Recordarme</span> 
+                                <span>
+                                    <input type="checkbox" class="ckbox" id="remember_me" name="_remember_me" value="on" style="width: 25px;" />
+                                </span>
+                            </label>
+                            <br>
+                            <button class="btn btn-primary btn-large btn-block" id="_submit" name="_submit">
+                                <i class="fa fa-sign-in"></i>
+                                {{ 'security.login.submit'|trans }}
+                            </button>
+                        </div>
+                        <div id="register-link" class="text-right">
+                            <a href="{{ path('fos_user_registration_register') }}" class="text-info">Registrate aquí</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
