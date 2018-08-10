@@ -9,13 +9,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/homepage", name="homepage")
      */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+    public function indexAction(Request $request){
+        return $this->render('index/homepage.html.twig',[
+
         ]);
+    }
+
+    /**
+     * @Route("/", name="index")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function entrarAction(Request $request){
+        //Si el usuario está logueado se redirecciona a la página principal
+        if(is_object($this->getUser())){
+            return $this->redirect('index');
+        }else{
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
     }
 }

@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/index.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container content-user">
+        <div class="box-info">
+            <div class="user">
+                <div class="avatar">
+                    {% if app.user.avatar == null %}
+                        <img src="{{ asset('assets/images/profile/default_avatar.png') }}" alt="avatar" />
+                    {% else %}
+                        <img src="{{ asset('assets/images/profile/'~app.user.avatar) }}" alt="avatar" />
+                    {% endif %}
+                </div>
+                <span class="name-user">{{ app.user.firstName }} {{ app.user.lastName }}</span>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+.user{
+    width: 350px;
+}
+
+.content-user{
+    margin-top: 56px;
+}
+
+.avatar{
+    background: #FFFFFF;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    float: left;
+}
+
+.avatar img{
+    height: 100%;
+    text-align: center;
+}
+.name-user{
+    float: right;
+    font-size: 23px;
+    margin-top: 30px;
+}
+

@@ -4,6 +4,22 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     {#<link rel="stylesheet" href="{{ asset('assets/bootstrap/css/darkly.min.css') }}">#}
+    <style>
+        .login-screen{
+            background: #EAEAEA;
+            border-radius: 3px;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .app-title h1{
+            background: #17a2b8;
+            padding: 10px 0 15px 0;
+            margin-top: 10px;
+            color: #FFF;
+            border-radius: 3px;
+        }
+    </style>
 
 {% endblock %}
 
@@ -14,7 +30,7 @@
         </div>
         <div class="form-style">
         <!-- Default form register -->
-        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register text-center border border-light p-5'}}) }}
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register text-center p-5'}}) }}
 
             <p class="h4 mb-4">Regístrate</p>
 
@@ -70,38 +86,31 @@
                 </div>
             </div>
             {{ form_widget(form.phoneNumber) }}
-            <br>
+            <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+                Lo usaremos para contactar contigo
+            </small>
 
             <!-- Password -->
             {{ form_widget(form.plainPassword.pass) }}
             <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                At least 8 characters and 1 digit
+                Mínimo 8 caracteres
             </small>
             {{ form_widget(form.plainPassword.repeat) }}
-            <!-- Phone number -->
-            {{ form_widget(form.phoneNumber) }}
-            <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-                Optional - for two step authentication
-            </small>
 
-            <!-- Newsletter -->
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
-                <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
-            </div>
 
             <!-- Sign up button -->
             <button class="btn btn-info my-4 btn-block" type="submit">Registrarse</button>
 
             <!-- Terms of service -->
-            <p>By clicking
-                <em>Sign up</em> you agree to our
-                <a href="" target="_blank">terms of service</a> and
-                <a href="" target="_blank">terms of service</a>.
+            <p>Al pulsar en
+                <em>Registrarse</em> estás aceptando nuestos
+                <a href="" target="_blank">terminos de servicio</a> y nuestra
+                <a href="" target="_blank">política de seguridad</a>.
             </p>
 
         {{ form_end(form) }}
         </div>
+        <h6 class="text-center">¿Ya estás registrado en Tenzo Jobs? <a href="{{ path('fos_user_security_login') }}">Inicia sesión</a></h6>
     </div>
 </div>
 

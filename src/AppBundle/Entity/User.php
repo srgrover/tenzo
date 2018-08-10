@@ -72,6 +72,11 @@ class User extends BaseUser
      * @var \DateTime
      */
     protected $born;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @var string
+     */
+    protected $avatar;
 
     /**
      * Returns the person's display name
@@ -259,5 +264,21 @@ class User extends BaseUser
     public function setBorn($born)
     {
         $this->born = $born;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param string $avatar
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
     }
 }
