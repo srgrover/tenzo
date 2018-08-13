@@ -20,6 +20,8 @@
                     {% endif %}
                 </div>
                 <span class="name-user">{{ app.user.firstName }} {{ app.user.lastName }}</span>
+                <small class="email-user">{{ app.user.email }}</small>
+                <i class="fas fa-check-circle {% if app.user.confirmed %} check-confirmed {% else %} check-no-confirmed {% endif %}" data-toggle="tooltip" title="{% if app.user.confirmed %}Email confirmado{% else %}Confirma tu email{% endif %}"></i>
                 <div class="clearfix"></div>
             </div>
         </div>

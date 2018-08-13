@@ -77,6 +77,11 @@ class User extends BaseUser
      * @var string
      */
     protected $avatar;
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     * @var boolean
+     */
+    protected $confirmed = false;
 
     /**
      * Returns the person's display name
@@ -281,4 +286,21 @@ class User extends BaseUser
     {
         $this->avatar = $avatar;
     }
+
+    /**
+     * @return bool
+     */
+    public function isConfirmed()
+    {
+        return $this->confirmed;
+    }
+
+    /**
+     * @param bool $confirmed
+     */
+    public function setConfirmed($confirmed)
+    {
+        $this->confirmed = $confirmed;
+    }
+
 }
