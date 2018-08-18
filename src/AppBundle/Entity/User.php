@@ -33,8 +33,8 @@ class User extends BaseUser
      */
     protected $lastName;
     /**
-     * @ORM\Column(type="integer", nullable=false)
-     * @var int
+     * @ORM\Column(type="string", nullable=false)
+     * @var string
      */
     protected $gender;
     /**
@@ -82,6 +82,30 @@ class User extends BaseUser
      * @var boolean
      */
     protected $confirmed = false;
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Formacion", mappedBy="usuario")
+     *
+     * @var Formacion
+     */
+    protected $formacion;
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Complementaria", mappedBy="usuario")
+     *
+     * @var Complementaria
+     */
+    protected $complementaria;
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Laboral", mappedBy="usuario")
+     *
+     * @var Laboral
+     */
+    protected $laboral;
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Idioma", mappedBy="usuario")
+     *
+     * @var Idioma
+     */
+    protected $idioma;
 
     /**
      * Returns the person's display name
@@ -303,4 +327,67 @@ class User extends BaseUser
         $this->confirmed = $confirmed;
     }
 
+    /**
+     * @return Complementaria
+     */
+    public function getComplementaria()
+    {
+        return $this->complementaria;
+    }
+
+    /**
+     * @param Complementaria $complementaria
+     */
+    public function setComplementaria($complementaria)
+    {
+        $this->complementaria = $complementaria;
+    }
+
+    /**
+     * @return Formacion
+     */
+    public function getFormacion()
+    {
+        return $this->formacion;
+    }
+
+    /**
+     * @param Formacion $formacion
+     */
+    public function setFormacion($formacion)
+    {
+        $this->formacion = $formacion;
+    }
+
+    /**
+     * @return Laboral
+     */
+    public function getLaboral()
+    {
+        return $this->laboral;
+    }
+
+    /**
+     * @param Laboral $laboral
+     */
+    public function setLaboral($laboral)
+    {
+        $this->laboral = $laboral;
+    }
+
+    /**
+     * @return Idioma
+     */
+    public function getIdioma()
+    {
+        return $this->idioma;
+    }
+
+    /**
+     * @param Idioma $idioma
+     */
+    public function setIdioma($idioma)
+    {
+        $this->idioma = $idioma;
+    }
 }

@@ -1,3 +1,13 @@
+.box-default{
+    background: #FEFEFE;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+    padding: 0 20px 20px;
+    margin: 0 auto;
+    float: none;
+    border-radius: 3px;
+    white-space: normal;
+}
+
 .user{
     width: 350px;
 }
@@ -20,15 +30,19 @@
     text-align: center;
 }
 .name-user{
-    float: right;
     font-size: 23px;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 110px;
 }
 
 .email-user{
-    margin-left: 8px;
+    margin-left: 10px;
     color: #777;
     font-size: medium;
+}
+
+.acciones{
+    margin-left: 10px;
 }
 
 .box-info{
@@ -43,4 +57,8 @@
 .check-no-confirmed{
     color: #aaa;
     font-size: 20px;
+}
+
+.box-recomendaciones{
+    border-left: 1px solid dimgrey;
 }

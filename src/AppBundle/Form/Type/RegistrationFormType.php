@@ -22,8 +22,8 @@ class RegistrationFormType extends AbstractType
             ->add('gender', ChoiceType::class, [
                 'label' => false,
                 'choices'  => [
-                    'Masculino' => 1,
-                    'Femenino' => 2,
+                    'Masculino' => 'Hombre',
+                    'Femenino' => 'Mujer',
                 ]])
             ->add('born', DateType::class, [
                 'label' => false,

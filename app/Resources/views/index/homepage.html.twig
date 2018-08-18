@@ -11,19 +11,113 @@
 {% block content %}
     <div class="container content-user">
         <div class="box-info">
-            <div class="user">
-                <div class="avatar">
-                    {% if app.user.avatar == null %}
-                        <img src="{{ asset('assets/images/profile/default_avatar.png') }}" alt="avatar" />
-                    {% else %}
-                        <img src="{{ asset('assets/images/profile/'~app.user.avatar) }}" alt="avatar" />
-                    {% endif %}
+            <div class="row">
+                <div class="col-md-5 col-md-push-5">
+                    <div class="avatar">
+                        {% if app.user.avatar == null %}
+                            <img src="{{ asset('assets/images/profile/default_avatar.png') }}" alt="avatar" />
+                        {% else %}
+                            <img src="{{ asset('assets/images/profile/'~app.user.avatar) }}" alt="avatar" />
+                        {% endif %}
+                    </div>
+                    <h2 class="name-user">{{ app.user.firstName }} {{ app.user.lastName }}</h2>
+                    <small class="email-user">{{ app.user.email }}</small>
+                    <i class="fas fa-check-circle {% if app.user.confirmed %} check-confirmed {% else %} check-no-confirmed {% endif %}" data-toggle="tooltip" title="{% if app.user.confirmed %}Email confirmado{% else %}Confirma tu email{% endif %}"></i><br>
+                    <a class="acciones" href="#">Editar perfil</a>
                 </div>
-                <span class="name-user">{{ app.user.firstName }} {{ app.user.lastName }}</span>
-                <small class="email-user">{{ app.user.email }}</small>
-                <i class="fas fa-check-circle {% if app.user.confirmed %} check-confirmed {% else %} check-no-confirmed {% endif %}" data-toggle="tooltip" title="{% if app.user.confirmed %}Email confirmado{% else %}Confirma tu email{% endif %}"></i>
-                <div class="clearfix"></div>
+
+                <div class="col-md-4 col-md-pull-4 ">
+                    <h6>
+                        <i class="col-md-2 text-center fas fa-{% if app.user.gender == 'Hombre' %}male{% else %}female{% endif %}"></i>
+                        {{ app.user.gender }}
+                    </h6>
+                    <h6>
+                        <i class="col-md-2 text-center fas fa-birthday-cake"></i>
+                        {{ app.user.born | date('d-m-y') }}
+                    </h6>
+                    <h6>
+                        <i class="col-md-2 text-center fas fa-map-marker-alt "></i>
+                        {{ app.user.city }}
+                    </h6>
+                    <h6>
+                        <i class="col-md-2 text-center fas fa-map-pin"></i>
+                        {{ app.user.address }}
+                    </h6>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Contacto</h5>
+                    <hr>
+                    <h6>
+                        <i class="col-md-2 text-center fas fa-mobile-alt"></i>
+                        {{ app.user.phoneNumber }}
+                    </h6>
+                    <h6>
+                        <i class="col-md-2 text-center fas fa-at"></i>
+                        {{ app.user.email }}
+                    </h6>
+                </div>
             </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="row col-md-8 col-md-push-8">
+            <div class="col-md-6 col-md-push-6">
+                <h4>Formación profesional <small><a href="#" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
+                <hr>
+                {% for formaciones in formacion %}
+                    <h6>{{ formaciones.especialidad }} <small>{{ formaciones.titulacion }}</small></h6>
+                    <h6>{{ formaciones.nombreCentro }} <small>({{ formaciones.ciudad }})</small></h6>
+                    <h6>Obtenido el {{ formaciones.obtencion|date ('d/m/Y') }}</h6>
+                    <a href="#">Editar</a>
+                    <a href="#" class="text-danger">Eliminar</a>
+                {% else %}
+                    <h6>Aún no has añadido ninguna formación profesional. <a href="#">Añadir</a></h6>
+                {% endfor %}
+                <hr>
+                <h4>Formación Complementaria <small><a href="#" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
+                <hr>
+                {% for comp in complementaria %}
+                    <h6>Obtenido en {{ comp.anio }}</h6>
+                    <h6>{{ comp.nombreCentro }} <small>({{ formaciones.ciudad }})</small></h6>
+                    <h6>{{ comp.titulacion }} <small>{{ comp.horas }}</small></h6>
+                    <a href="#">Editar</a>
+                    <a href="#" class="text-danger">Eliminar</a>
+                {% else %}
+                    <h6>Aún no has añadido ninguna formación complementaria. <a href="#">Añadir</a></h6>
+                {% endfor %}
+            </div>
+            <div class="col-md-6 col-md-push-6">
+                <h4>Experiencia Profesional <small><a href="#" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
+                <hr>
+                {% for lab in laboral %}
+                    <h6>{{ lab.fechaInicio }} - {{ lab.fechaFin }}</h6>
+                    <h6>{{ lab.puesto }}</h6>
+                    <h6>{{ lab.empresa }}</h6>
+                    <h6>({{ lab.actividad }})<small>{{ lab.tareas }}</small></h6>
+                    <a href="#">Editar</a>
+                    <a href="#" class="text-danger">Eliminar</a>
+                {% else %}
+                    <h6>Aún no has añadido ninguna experiencia profesional. <a href="#">Añadir</a></h6>
+                {% endfor %}
+                <hr>
+                <h4>Idiomas <small><a href="#" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
+                <hr>
+                {% for idio in idioma %}
+                    <h6>{{ idio.idioma }}</h6>
+                    <h6>Nivel {{ idio.esctribe }} de escritura</h6>
+                    <h6>Nivel {{ idio.habla }} oral</h6>
+                    <h6>Nivel {{ idio.traduce }} de traduccion</h6>
+                    <a href="#">Editar</a>
+                    <a href="#" class="text-danger">Eliminar</a>
+                {% else %}
+                    <h6>Aún no has añadido ningún idioma. <a href="#">Añadir</a></h6>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4 col-md-push-4 box-recomendaciones">
+            <h4 class="text-center">Novedades para usted</h4>
         </div>
     </div>
 {% endblock %}
