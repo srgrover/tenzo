@@ -33,7 +33,7 @@ class DefaultController extends Controller
     public function entrarAction(Request $request){
         //Si el usuario está logueado se redirecciona a la página principal
         if(is_object($this->getUser())){
-            return $this->redirect('index');
+            return $this->redirectToRoute('homepage');
         }else{
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }

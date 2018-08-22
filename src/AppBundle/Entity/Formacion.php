@@ -132,6 +132,7 @@ class Formacion{
     {
         $this->obtencion = $obtencion;
     }
+
     /**
      * @return User
      */
@@ -139,6 +140,7 @@ class Formacion{
     {
         return $this->usuario;
     }
+
     /**
      * @param User $usuario
      */

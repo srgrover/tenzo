@@ -1,13 +1,5 @@
 {% extends 'layout.html.twig' %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
-{% endblock %}
-
-{% block javascripts %}
-    <script src="{{ asset('assets/js/index.js') }}"></script>
-{% endblock %}
-
 {% block content %}
     <div class="container content-user">
         <div class="box-info">
@@ -64,7 +56,7 @@
     <div class="row">
         <div class="row col-md-8 col-md-push-8">
             <div class="col-md-6 col-md-push-6">
-                <h4>Formación profesional <small><a href="#" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
+                <h4>Formación profesional <small><a href="{{ path('add_formacion') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
                 <hr>
                 {% for formaciones in formacion %}
                     <h6>{{ formaciones.especialidad }} <small>{{ formaciones.titulacion }}</small></h6>

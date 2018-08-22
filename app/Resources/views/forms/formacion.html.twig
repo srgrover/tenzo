@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="content-user">
+        <div class="login-screen">
+            <div class="form-style col-md-6">
+                <!-- Default form register -->
+                {{ form_start(formulario) }}
+
+                <p class="h4 mb-4">Añade tu formación</p>
+
+                <div class="form-row mb-4">
+                    <div class="col">
+                        {{ form_widget(formulario.nombreCentro) }}
+                    </div>
+                    <div class="col">
+                        <!-- Last name -->
+                        {{ form_widget(formulario.especialidad) }}
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-graduation-cap"></i></span>
+                    </div>
+                    {{ form_widget(formulario.titulacion) }}
+                </div>
+                <br/>
+                <div class="form-row mb-4">
+                    <div class="input-group col col-md-6">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        </div>
+                        <!-- Email -->
+                        {{ form_widget(formulario.ciudad) }}
+                    </div>
+                    <div class="col col-md-6">
+                        <!-- Username -->
+                        {{ form_widget(formulario.obtencion) }}
+                    </div>
+                </div>
+                <button class="btn btn-info" type="submit">
+                    <i class="fas fa-plus"></i>
+                    Añadir
+                </button>
+                <a href="{{ path('homepage') }}">Cancelar</a>
+                {{ form_end(formulario) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
