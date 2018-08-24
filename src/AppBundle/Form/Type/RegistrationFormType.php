@@ -28,6 +28,10 @@ class RegistrationFormType extends AbstractType
             ->add('born', DateType::class, [
                 'label' => false,
                 'format' => 'dd-MM-yyyy',
+                'years' => range(1930,Date('Y')-18),
+                'placeholder' => [
+                    'day' => 'Día', 'month' => 'Mes', 'year' => 'Año'
+                ],
                 'attr' => ['placeholder' => ''],
                 'translation_domain' => 'FOSUserBundle'
             ])

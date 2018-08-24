@@ -34,7 +34,10 @@ class FormacionFormType extends AbstractType
             ->add('obtencion', DateType::class, [
                 'label' => false,
                 'format' => 'dd-MM-yyyy',
-                'attr' => ['placeholder' => ''],
+                'years' => range(1930,Date('Y')),
+                'placeholder' => [
+                    'day' => 'Día', 'month' => 'Mes', 'year' => 'Año'
+                ],
                 'translation_domain' => 'FOSUserBundle'
             ])
             ->add('ciudad', null, [

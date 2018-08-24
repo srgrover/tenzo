@@ -25,6 +25,24 @@
     float: left;
 }
 
+html, body{
+    height: 100%;
+}
+
+.flex-parent{
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-child{
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .avatar img{
     height: 100%;
     text-align: center;

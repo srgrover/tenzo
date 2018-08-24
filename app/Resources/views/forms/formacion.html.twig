@@ -2,8 +2,8 @@
 
 {% block content %}
     <div class="content-user">
-        <div class="login-screen">
-            <div class="form-style col-md-6">
+        <div class="login-screen flex-parent">
+            <div class="form-style col-md-6 align-middle mt-5">
                 <!-- Default form register -->
                 {{ form_start(formulario) }}
 
@@ -28,7 +28,7 @@
                 <div class="form-row mb-4">
                     <div class="input-group col col-md-6">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-hotel"></i></span>
                         </div>
                         <!-- Email -->
                         {{ form_widget(formulario.ciudad) }}
@@ -44,6 +44,9 @@
                 </button>
                 <a href="{{ path('homepage') }}">Cancelar</a>
                 {{ form_end(formulario) }}
+            </div>
+            <div class="col-md-6 align-middle mt-5">
+            <h5 class="text-center">A tener en cuenta <i class="fas fa-hand-point-down"></i> </h5>
             </div>
         </div>
     </div>
