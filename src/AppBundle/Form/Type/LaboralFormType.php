@@ -2,37 +2,46 @@
 
 namespace AppBundle\Form\Type;
 use AppBundle\Entity\Formacion;
+use AppBundle\Entity\Laboral;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class FormacionFormType extends AbstractType
+class LaboralFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombreCentro', null, [
+            ->add('empresa', null, [
                 'label' => false,
-                'attr' => ['placeholder' => 'Nombre del Centro'],
+                'attr' => ['placeholder' => 'Nombre de la empresa'],
             ])
-            ->add('especialidad', null, [
+            ->add('puesto', null, [
                 'label' => false,
-                'attr' => ['placeholder' => 'Título obtenido'],
+                'attr' => ['placeholder' => 'Puesto'],
             ])
-            ->add('titulacion', ChoiceType::class, [
+            ->add('actividad', null, [
                 'label' => false,
-                'choices'  => [
-                    'Educacion Secundaria Obligatoria' => 'Educacion Secundaria Obligatoria',
-                    'Formación Profesional Grado Medio' => 'Formación Profesional Grado Medio',
-                    'Formación Profesional Grado Superior' => 'Formación Profesional Grado Superior',
-                    'Estudios Universitarios' => 'Estudios Universitarios',
-                    'Grado' => 'Grado',
-                    'Posgrado' => 'Posgrado',
-                ]])
-            ->add('obtencion', DateType::class, [
-                'label' => false,
+                'attr' => ['placeholder' => 'Actividad'],
+            ])
+            ->add('tareas', TextareaType::class, [
+                'label' => 'Tareas',
+                'attr' => ['placeholder' => 'Tareas que realizabas en tu puesto de trabajo'],
+            ])
+            ->add('fechaInicio', DateType::class, [
+                'label' => 'Fecha inicio',
+                'format' => 'dd-MM-yyyy',
+                'years' => range(1930,Date('Y')),
+                'placeholder' => [
+                    'day' => 'Día', 'month' => 'Mes', 'year' => 'Año'
+                ],
+                'translation_domain' => 'FOSUserBundle'
+            ])
+            ->add('fechaFin', DateType::class, [
+                'label' => 'Fecha fin',
                 'format' => 'dd-MM-yyyy',
                 'years' => range(1930,Date('Y')),
                 'placeholder' => [
@@ -52,7 +61,7 @@ class FormacionFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Formacion::class
+            'data_class' => Laboral::class
         ));
     }
     /**
@@ -60,6 +69,6 @@ class FormacionFormType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_formacion';
+        return 'appbundle_laboral';
     }
 }

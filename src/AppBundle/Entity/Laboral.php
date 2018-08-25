@@ -36,6 +36,11 @@ class Laboral{
      */
     private $tareas;
     /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $ciudad;
+    /**
      * @ORM\Column(type="datetime")
      * @var \DateTime
      */
@@ -121,6 +126,23 @@ class Laboral{
     {
         $this->tareas = $tareas;
     }
+
+    /**
+     * @return string
+     */
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+    /**
+     * @param string $ciudad
+     */
+    public function setCiudad($ciudad)
+    {
+        $this->ciudad = $ciudad;
+    }
+
     /**
      * @return \DateTime
      */

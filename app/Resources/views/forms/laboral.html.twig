@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %} Añadir Experiencia | Tenzo Jobs {% endblock %}
+
 {% block content %}
     <div class="content-user">
         <div class="login-screen flex-parent">
@@ -7,35 +9,43 @@
                 <!-- Default form register -->
                 {{ form_start(formulario) }}
 
-                <p class="h4 mb-4">Añade tu formación</p>
+                <p class="h4 mb-4">Añade una experiencia laboral</p>
 
                 <div class="form-row mb-4">
                     <div class="col">
-                        {{ form_widget(formulario.nombreCentro) }}
+                        {{ form_widget(formulario.empresa) }}
+                    </div>
+                    <div class="col">
+                        <!-- Ciudad -->
+                        {{ form_widget(formulario.ciudad) }}
+                    </div>
+                </div>
+                <div class="form-row mb-4">
+                    <div class="col">
+                        {{ form_widget(formulario.puesto) }}
                     </div>
                     <div class="col">
                         <!-- Last name -->
-                        {{ form_widget(formulario.especialidad) }}
+                        {{ form_widget(formulario.actividad) }}
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-clipboard-list"></i></span>
                     </div>
-                    {{ form_widget(formulario.titulacion) }}
+                    {{ form_widget(formulario.tareas) }}
                 </div>
                 <br/>
                 <div class="form-row mb-4">
                     <div class="input-group col col-md-6">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-hotel"></i></span>
-                        </div>
-                        <!-- Email -->
-                        {{ form_widget(formulario.ciudad) }}
+                        <label class="col-form-label-sm label">Fecha inicio</label>
+                        <!-- Fecha inicio -->
+                        {{ form_widget(formulario.fechaInicio) }}
                     </div>
                     <div class="col col-md-6">
-                        <!-- Username -->
-                        {{ form_widget(formulario.obtencion) }}
+                        <label class="col-form-label-sm">Fecha fin</label>
+                        <!-- Fecha fin -->
+                        {{ form_widget(formulario.fechaFin) }}
                     </div>
                 </div>
                 <button class="btn btn-info" type="submit">

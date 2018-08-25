@@ -65,7 +65,7 @@
                     <a href="#">Editar</a>
                     <a href="#" class="text-danger">Eliminar</a>
                 {% else %}
-                    <h6>Aún no has añadido ninguna formación profesional. <a href="#">Añadir</a></h6>
+                    <h6>Aún no has añadido ninguna formación profesional. <a href="{{ path('add_formacion') }}">Añadir</a></h6>
                 {% endfor %}
                 <hr>
                 <h4>Formación Complementaria <small><a href="#" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
@@ -81,17 +81,16 @@
                 {% endfor %}
             </div>
             <div class="col-md-6 col-md-push-6">
-                <h4>Experiencia Profesional <small><a href="#" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
+                <h4>Experiencia Profesional <small><a href="{{ path('add_laboral') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
                 <hr>
                 {% for lab in laboral %}
-                    <h6>{{ lab.fechaInicio }} - {{ lab.fechaFin }}</h6>
-                    <h6>{{ lab.puesto }}</h6>
-                    <h6>{{ lab.empresa }}</h6>
-                    <h6>({{ lab.actividad }})<small>{{ lab.tareas }}</small></h6>
+                    <h6>Desde {{ lab.fechaInicio|date('d/m/Y') }} hasta {{ lab.fechaFin|date('d/m/Y') }}</h6>
+                    <h6>{{ lab.puesto }} ({{ lab.actividad }}) en {{ lab.empresa }} <small>({{ lab.ciudad }})</small></h6>
+                    <h6>Tareas: <small>{{ lab.tareas }}</small></h6>
                     <a href="#">Editar</a>
                     <a href="#" class="text-danger">Eliminar</a>
                 {% else %}
-                    <h6>Aún no has añadido ninguna experiencia profesional. <a href="#">Añadir</a></h6>
+                    <h6>Aún no has añadido ninguna experiencia profesional. <a href="{{ path('add_laboral') }}">Añadir</a></h6>
                 {% endfor %}
                 <hr>
                 <h4>Idiomas <small><a href="#" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>

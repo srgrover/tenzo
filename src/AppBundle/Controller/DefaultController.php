@@ -10,22 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/homepage", name="homepage")
-     */
-    public function indexAction(Request $request){
-        $formacion = $this->getFormacion($request);
-        $complementaria = $this->getComplementaria($request);
-        $laboral = $this->getLaboral($request);
-        $idioma = $this->getIdioma($request);
-        return $this->render('index/homepage.html.twig',[
-        'formacion' => $formacion,
-        'complementaria' => $complementaria,
-        'laboral' => $laboral,
-        'idioma' => $idioma
-        ]);
-    }
-
-    /**
      * @Route("/", name="index")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -33,10 +17,26 @@ class DefaultController extends Controller
     public function entrarAction(Request $request){
         //Si el usuario está logueado se redirecciona a la página principal
         if(is_object($this->getUser())){
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('inicio');
         }else{
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
+    }
+
+    /**
+     * @Route("/inicio", name="inicio")
+     */
+    public function indexAction(Request $request){
+        $formacion = $this->getFormacion($request);
+        $complementaria = $this->getComplementaria($request);
+        $laboral = $this->getLaboral($request);
+        $idioma = $this->getIdioma($request);
+        return $this->render('index/inicio.html.twig',[
+            'formacion' => $formacion,
+            'complementaria' => $complementaria,
+            'laboral' => $laboral,
+            'idioma' => $idioma
+        ]);
     }
 
     public function getFormacion($request){
