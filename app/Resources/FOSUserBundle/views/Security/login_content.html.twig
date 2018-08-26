@@ -28,20 +28,20 @@
                         <div class="form-group">
                             <input type="password" id="password" name="_password" class="login-field form-control" value="" placeholder="Contraseña" required="required" />
                         </div>
-                        <div class="form-group">
+                        <div class="form-group row">
                             <label for="remember-me" class="text-info">
                                 <span>Recordarme</span> 
                                 <span>
                                     <input type="checkbox" class="ckbox" id="remember_me" name="_remember_me" value="on" style="width: 25px;" />
                                 </span>
                             </label>
-                            <br>
-                            <button class="btn btn-primary btn-large btn-block" id="_submit" name="_submit">
-                                <i class="fa fa-sign-in"></i>
+                            <div class="col-md-6"></div>
+                            <button class="btn btn-primary btn-large" id="_submit" name="_submit">
                                 {{ 'security.login.submit'|trans }}
                             </button>
                         </div>
                     </form>
+                    <hr>
                     <span class="text-center span-registro">¿Aún no estás registrado?</span>
                     <a href="{{ path('fos_user_registration_register') }}" class="btn btn-info btn-large btn-block">Crea una cuenta hoy mismo</a>
                 </div>

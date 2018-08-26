@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Añadir Idioma | Tenzo Jobs{% endblock %}
+
+{% block content %}
+    <div class="content-user">
+        <div class="login-screen flex-parent">
+            <div class="form-style col-md-6 align-middle mt-5">
+                <!-- Default form register -->
+                {{ form_start(formulario) }}
+
+                <p class="h4 mb-4">Añade un idioma</p>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-comment"></i></span>
+                    </div>
+                    {{ form_widget(formulario.idioma) }}
+                </div>
+                <br/>
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <label>Nivel oral</label>
+                        {{ form_widget(formulario.habla) }}
+                    </div>
+                    <div class="col">
+                        <label>Nivel escrito</label>
+                        {{ form_widget(formulario.escribe) }}
+                    </div>
+                    <div class="col">
+                        <label>Nivel de traducción</label>
+                        {{ form_widget(formulario.traduce) }}
+                    </div>
+                </div>
+                <button class="btn btn-info" type="submit">
+                    <i class="fas fa-plus"></i>
+                    Añadir
+                </button>
+                <a href="{{ path('inicio') }}" class="btn btn-link">Cancelar</a>
+                {{ form_end(formulario) }}
+            </div>
+            <div class="col-md-6 align-middle mt-5">
+            <h5 class="text-center">A tener en cuenta <i class="fas fa-hand-point-down"></i> </h5>
+            </div>
+        </div>
+    </div>
+{% endblock %}

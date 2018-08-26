@@ -42,11 +42,11 @@
                     <hr>
                     <h6>
                         <i class="col-md-2 text-center fas fa-mobile-alt"></i>
-                        {{ app.user.phoneNumber }}
+                        <small>{{ app.user.phoneNumber }}</small>
                     </h6>
                     <h6>
                         <i class="col-md-2 text-center fas fa-at"></i>
-                        {{ app.user.email }}
+                        <small>{{ app.user.email }}</small>
                     </h6>
                 </div>
             </div>
@@ -62,22 +62,25 @@
                     <h6>{{ formaciones.especialidad }} <small>{{ formaciones.titulacion }}</small></h6>
                     <h6>{{ formaciones.nombreCentro }} <small>({{ formaciones.ciudad }})</small></h6>
                     <h6>Obtenido el {{ formaciones.obtencion|date ('d/m/Y') }}</h6>
-                    <a href="#">Editar</a>
-                    <a href="#" class="text-danger">Eliminar</a>
+                    <a href="#" class="btn btn-sm btn-link">Editar</a>
+                    <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
+                    <hr>
                 {% else %}
                     <h6>Aún no has añadido ninguna formación profesional. <a href="{{ path('add_formacion') }}">Añadir</a></h6>
+                    <hr>
                 {% endfor %}
-                <hr>
-                <h4>Formación Complementaria <small><a href="#" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
+                <h4>Formación Complementaria <small><a href="{{ path('add_complementaria') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
                 <hr>
                 {% for comp in complementaria %}
                     <h6>Obtenido en {{ comp.anio }}</h6>
-                    <h6>{{ comp.nombreCentro }} <small>({{ formaciones.ciudad }})</small></h6>
-                    <h6>{{ comp.titulacion }} <small>{{ comp.horas }}</small></h6>
-                    <a href="#">Editar</a>
-                    <a href="#" class="text-danger">Eliminar</a>
+                    <h6>{{ comp.nombreCentro }} <small>({{ comp.ciudad }})</small></h6>
+                    <h6>{{ comp.titulacion }} <small>({{ comp.horas }} horas)</small></h6>
+                    <a href="#" class="btn btn-sm btn-link">Editar</a>
+                    <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
+                    <hr>
                 {% else %}
-                    <h6>Aún no has añadido ninguna formación complementaria. <a href="#">Añadir</a></h6>
+                    <h6>Aún no has añadido ninguna formación complementaria. <a href="{{ path('add_complementaria') }}">Añadir</a></h6>
+                    <hr>
                 {% endfor %}
             </div>
             <div class="col-md-6 col-md-push-6">
@@ -87,23 +90,30 @@
                     <h6>Desde {{ lab.fechaInicio|date('d/m/Y') }} hasta {{ lab.fechaFin|date('d/m/Y') }}</h6>
                     <h6>{{ lab.puesto }} ({{ lab.actividad }}) en {{ lab.empresa }} <small>({{ lab.ciudad }})</small></h6>
                     <h6>Tareas: <small>{{ lab.tareas }}</small></h6>
-                    <a href="#">Editar</a>
-                    <a href="#" class="text-danger">Eliminar</a>
+                    <a href="#" class="btn btn-sm btn-link">Editar</a>
+                    <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
+                    <hr>
                 {% else %}
                     <h6>Aún no has añadido ninguna experiencia profesional. <a href="{{ path('add_laboral') }}">Añadir</a></h6>
+                    <hr>
                 {% endfor %}
-                <hr>
-                <h4>Idiomas <small><a href="#" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
+                <h4>Idiomas <small><a href="{{ path('add_idioma') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
                 <hr>
                 {% for idio in idioma %}
-                    <h6>{{ idio.idioma }}</h6>
-                    <h6>Nivel {{ idio.esctribe }} de escritura</h6>
-                    <h6>Nivel {{ idio.habla }} oral</h6>
-                    <h6>Nivel {{ idio.traduce }} de traduccion</h6>
-                    <a href="#">Editar</a>
-                    <a href="#" class="text-danger">Eliminar</a>
+                    <h6 class="lb-idioma text-center">{{ idio.idioma }}</h6>
+                    <div class="float-md-right">
+                        <small class="row">Nivel {{ idio.habla }} oral</small>
+                        <small class="row">Nivel {{ idio.escribe }} de escritura</small>
+                        <small class="row">Nivel {{ idio.traduce }} de traduccion</small>
+                    </div>
+
+                    <a href="#" class="btn btn-sm btn-link">Editar</a>
+                    <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
+                    <div class="clearfix"></div>
+                    <hr>
                 {% else %}
-                    <h6>Aún no has añadido ningún idioma. <a href="#">Añadir</a></h6>
+                    <h6>Aún no has añadido ningún idioma. <a href="{{ path('add_idioma') }}">Añadir</a></h6>
+                    <hr>
                 {% endfor %}
             </div>
         </div>

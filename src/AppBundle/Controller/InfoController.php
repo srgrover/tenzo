@@ -2,9 +2,13 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Complementaria;
 use AppBundle\Entity\Formacion;
+use AppBundle\Entity\Idioma;
 use AppBundle\Entity\Laboral;
+use AppBundle\Form\Type\ComplementariaFormType;
 use AppBundle\Form\Type\FormacionFormType;
+use AppBundle\Form\Type\IdiomaFormType;
 use AppBundle\Form\Type\LaboralFormType;
 use Doctrine\ORM\EntityManager;
 use http\Exception;
@@ -45,6 +49,36 @@ class InfoController extends Controller
     }
 
     /**
+     * @Route("/complementaria/añadir", name="add_complementaria")
+     */
+    public function addComplementariaAction(Request $request){
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+        $complementaria = new Complementaria();
+        $usuario = $this->getUser();
+        $complementaria->setUsuario($usuario);
+        $em->persist($complementaria);
+
+        $form = $this->createForm(ComplementariaFormType::class, $complementaria);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $em->flush();
+                $this->addFlash('estado', 'Su formación complementaria se ha guardado correctamente');
+                return $this->redirectToRoute('inicio');
+            }
+            catch(Exception $e) {
+                $this->addFlash('error', 'No se han podido guardar los cambios');
+            }
+        }
+        return $this->render('forms/complementaria.html.twig', [
+            'complementaria' => $complementaria,
+            'formulario' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/experiencia/añadir", name="add_laboral")
      */
     public function addLaboralAction(Request $request){
@@ -70,6 +104,36 @@ class InfoController extends Controller
         }
         return $this->render('forms/laboral.html.twig', [
             'laboral' => $laboral,
+            'formulario' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/idioma/añadir", name="add_idioma")
+     */
+    public function addIdiomaAction(Request $request){
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+        $idioma = new Idioma();
+        $usuario = $this->getUser();
+        $idioma->setUsuario($usuario);
+        $em->persist($idioma);
+
+        $form = $this->createForm(IdiomaFormType::class, $idioma);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $em->flush();
+                $this->addFlash('estado', 'Su formación complementaria se ha guardado correctamente');
+                return $this->redirectToRoute('inicio');
+            }
+            catch(Exception $e) {
+                $this->addFlash('error', 'No se han podido guardar los cambios');
+            }
+        }
+        return $this->render('forms/idioma.html.twig', [
+            'idioma' => $idioma,
             'formulario' => $form->createView(),
         ]);
     }

@@ -1,3 +1,7 @@
+html, body{
+    height: 100%;
+}
+
 .box-default{
     background: #FEFEFE;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
@@ -16,6 +20,17 @@ select {
     width: 75px;
 }
 
+.form-style{
+    border-right: 1px solid #DDD;
+}
+
+.lb-idioma{
+    padding: 3px 15px;
+    border-radius: 3px;
+    border: 1px solid #007bff;
+    color: #007bff;
+}
+
 .user{
     width: 350px;
 }
@@ -31,10 +46,6 @@ select {
     height: 100px;
     overflow: hidden;
     float: left;
-}
-
-html, body{
-    height: 100%;
 }
 
 .flex-parent{

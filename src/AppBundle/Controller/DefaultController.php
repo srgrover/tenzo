@@ -27,6 +27,10 @@ class DefaultController extends Controller
      * @Route("/inicio", name="inicio")
      */
     public function indexAction(Request $request){
+        if (!is_object($this->getUser())){
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $formacion = $this->getFormacion($request);
         $complementaria = $this->getComplementaria($request);
         $laboral = $this->getLaboral($request);

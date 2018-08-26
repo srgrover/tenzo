@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Añadir Formación | Tenzo Jobs{% endblock %}
+{% block title %}Añadir Formación complementaria | Tenzo Jobs{% endblock %}
 
 {% block content %}
     <div class="content-user">
@@ -9,7 +9,7 @@
                 <!-- Default form register -->
                 {{ form_start(formulario) }}
 
-                <p class="h4 mb-4">Añade tu formación</p>
+                <p class="h4 mb-4">Añade tu formación compementaria</p>
 
                 <div class="form-row mb-4">
                     <div class="col">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="col">
                         <!-- Last name -->
-                        {{ form_widget(formulario.especialidad) }}
+                        {{ form_widget(formulario.ciudad) }}
                     </div>
                 </div>
                 <div class="input-group">
@@ -28,23 +28,24 @@
                 </div>
                 <br/>
                 <div class="form-row mb-4">
-                    <div class="input-group col col-md-6">
+                    <div class="input-group col col-md-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-hotel"></i></span>
+                            <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-clock"></i></span>
                         </div>
                         <!-- Email -->
-                        {{ form_widget(formulario.ciudad) }}
+                        {{ form_widget(formulario.horas) }}
                     </div>
-                    <div class="col col-md-6">
+                    <div class="col col-md-3">
                         <!-- Username -->
-                        {{ form_widget(formulario.obtencion) }}
+                        {{ form_widget(formulario.anio) }}
                     </div>
+                    <button class="btn btn-info" type="submit">
+                        <i class="fas fa-plus"></i>
+                        Añadir
+                    </button>
+                    <a href="{{ path('inicio') }}" class="btn btn-link">Cancelar</a>
                 </div>
-                <button class="btn btn-info" type="submit">
-                    <i class="fas fa-plus"></i>
-                    Añadir
-                </button>
-                <a href="{{ path('inicio') }}" class="btn btn-link">Cancelar</a>
+
                 {{ form_end(formulario) }}
             </div>
             <div class="col-md-6 align-middle mt-5">
