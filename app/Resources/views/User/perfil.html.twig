@@ -1,0 +1,80 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Perfil | Tenzo Jobs {% endblock %}
+
+{% block content %}
+    <div class="container content-user">
+        <h2 class="card-title perfil-title">Tu información</h2>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active show" href="#profile" role="tab" data-toggle="tab">Perfil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Información de contacto</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content flex-container">
+            <div role="tabpanel" class="tab-pane fade in active show" id="profile">
+                <div class="row">
+                    <div class="col-3 content-img">
+                        <div class="perfil-img">
+                            <div class="avatar mt-4">
+                                {% if app.user.avatar == null %}
+                                    <img src="{{ asset('assets/images/profile/default_avatar.png') }}" alt="avatar" />
+                                {% else %}
+                                    <img src="{{ asset('assets/images/profile/'~app.user.avatar) }}" alt="avatar" />
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div style="width: 100%;">
+                            <a href="#" class="change-img-link"><small>Cambiar de imagen</small></a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <div class="perfil-nombre pt-4">
+                                    <h2>{{ app.user.firstName }} {{ app.user.lastName }}</h2>
+                                    <a href="#"><small>Editar nombre</small></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul class="perfil-data-list">
+                                    <li><span class="btn list-data-item">{{ app.user.email }}</span></li>
+                                    <li><span class="btn list-data-item">{{ app.user.born|date('d/m/Y') }}</span></li>
+                                    <li><span class="btn list-data-item">{{ app.user.address }}</span></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <ul class="perfil-data-list">
+                                    <li><a href="#" class="btn btn-link">Administrar la forma de iniciar sesión en Tenzo</a></li>
+                                    <li><a href="#" class="btn btn-link">Cambiar mi fecha de nacimiento</a></li>
+                                    <li><a href="#" class="btn btn-link">Editar mis datos geofráficos</a></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="buzz">bbb</div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+{% endblock %}

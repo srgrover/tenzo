@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %} Inicio | Tenzo Jobs {% endblock %}
+
 {% block content %}
     <div class="container content-user">
         <div class="box-info">
@@ -15,7 +17,7 @@
                     <h2 class="name-user">{{ app.user.firstName }} {{ app.user.lastName }}</h2>
                     <small class="email-user">{{ app.user.email }}</small>
                     <i class="fas fa-check-circle {% if app.user.confirmed %} check-confirmed {% else %} check-no-confirmed {% endif %}" data-toggle="tooltip" title="{% if app.user.confirmed %}Email confirmado{% else %}Confirma tu email{% endif %}"></i><br>
-                    <a class="acciones" href="#">Editar perfil</a>
+                    <a class="acciones" href="{{ path('perfil') }}">Editar perfil</a>
                 </div>
 
                 <div class="col-md-4 col-md-pull-4 ">
@@ -56,65 +58,91 @@
     <div class="row">
         <div class="row col-md-8 col-md-push-8">
             <div class="col-md-6 col-md-push-6">
-                <h4>Formación profesional <small><a href="{{ path('add_formacion') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
-                <hr>
-                {% for formaciones in formacion %}
-                    <h6>{{ formaciones.especialidad }} <small>{{ formaciones.titulacion }}</small></h6>
-                    <h6>{{ formaciones.nombreCentro }} <small>({{ formaciones.ciudad }})</small></h6>
-                    <h6>Obtenido el {{ formaciones.obtencion|date ('d/m/Y') }}</h6>
-                    <a href="#" class="btn btn-sm btn-link">Editar</a>
-                    <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
-                    <hr>
-                {% else %}
-                    <h6>Aún no has añadido ninguna formación profesional. <a href="{{ path('add_formacion') }}">Añadir</a></h6>
-                    <hr>
-                {% endfor %}
-                <h4>Formación Complementaria <small><a href="{{ path('add_complementaria') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
-                <hr>
-                {% for comp in complementaria %}
-                    <h6>Obtenido en {{ comp.anio }}</h6>
-                    <h6>{{ comp.nombreCentro }} <small>({{ comp.ciudad }})</small></h6>
-                    <h6>{{ comp.titulacion }} <small>({{ comp.horas }} horas)</small></h6>
-                    <a href="#" class="btn btn-sm btn-link">Editar</a>
-                    <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
-                    <hr>
-                {% else %}
-                    <h6>Aún no has añadido ninguna formación complementaria. <a href="{{ path('add_complementaria') }}">Añadir</a></h6>
-                    <hr>
-                {% endfor %}
+                <div class="box-default">
+                    <div class="card-header">
+                        <h5 class="card-title title-box-default">Formación profesional <small><a href="{{ path('add_formacion') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h5>
+                    </div>
+                    <div class="card-body">
+                        {% for formaciones in formacion %}
+                            <h6>{{ formaciones.especialidad }} <small>{{ formaciones.titulacion }}</small></h6>
+                            <h6>{{ formaciones.nombreCentro }} <small>({{ formaciones.ciudad }})</small></h6>
+                            <h6>Obtenido el {{ formaciones.obtencion|date ('d/m/Y') }}</h6>
+                            <a href="#" class="btn btn-sm btn-link">Editar</a>
+                            <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
+                            {% if formacion|length > 1 %}
+                                <hr>
+                            {% endif %}
+                        {% else %}
+                            <h6>Aún no has añadido ninguna formación profesional. <a href="{{ path('add_formacion') }}">Añadir</a></h6>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="box-default">
+                    <div class="card-header">
+                        <h5 class="card-title title-box-default">Formación Complementaria <small><a href="{{ path('add_complementaria') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h5>
+                    </div>
+                    <div class="card-body">
+                        {% for comp in complementaria %}
+                            <h6>Obtenido en {{ comp.anio }}</h6>
+                            <h6>{{ comp.nombreCentro }} <small>({{ comp.ciudad }})</small></h6>
+                            <h6>{{ comp.titulacion }} <small>({{ comp.horas }} horas)</small></h6>
+                            <a href="#" class="btn btn-sm btn-link">Editar</a>
+                            <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
+                            {% if complementaria|length > 1 and not loop.last %}
+                                <hr>
+                            {% endif %}
+                        {% else %}
+                            <h6>Aún no has añadido ninguna formación complementaria. <a href="{{ path('add_complementaria') }}">Añadir</a></h6>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
             <div class="col-md-6 col-md-push-6">
-                <h4>Experiencia Profesional <small><a href="{{ path('add_laboral') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
-                <hr>
-                {% for lab in laboral %}
-                    <h6>Desde {{ lab.fechaInicio|date('d/m/Y') }} hasta {{ lab.fechaFin|date('d/m/Y') }}</h6>
-                    <h6>{{ lab.puesto }} ({{ lab.actividad }}) en {{ lab.empresa }} <small>({{ lab.ciudad }})</small></h6>
-                    <h6>Tareas: <small>{{ lab.tareas }}</small></h6>
-                    <a href="#" class="btn btn-sm btn-link">Editar</a>
-                    <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
-                    <hr>
-                {% else %}
-                    <h6>Aún no has añadido ninguna experiencia profesional. <a href="{{ path('add_laboral') }}">Añadir</a></h6>
-                    <hr>
-                {% endfor %}
-                <h4>Idiomas <small><a href="{{ path('add_idioma') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h4>
-                <hr>
-                {% for idio in idioma %}
-                    <h6 class="lb-idioma text-center">{{ idio.idioma }}</h6>
-                    <div class="float-md-right">
-                        <small class="row">Nivel {{ idio.habla }} oral</small>
-                        <small class="row">Nivel {{ idio.escribe }} de escritura</small>
-                        <small class="row">Nivel {{ idio.traduce }} de traduccion</small>
+                <div class="box-default">
+                    <div class="card-header">
+                        <h5 class="card-title title-box-default">Experiencia Profesional <small><a href="{{ path('add_laboral') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h5>
                     </div>
+                    <div class="card-body">
+                        {% for lab in laboral %}
+                            <h6>Desde {{ lab.fechaInicio|date('d/m/Y') }} hasta {{ lab.fechaFin|date('d/m/Y') }}</h6>
+                            <h6>{{ lab.puesto }} ({{ lab.actividad }}) en {{ lab.empresa }} <small>({{ lab.ciudad }})</small></h6>
+                            <h6>Tareas: <small>{{ lab.tareas }}</small></h6>
+                            <a href="#" class="btn btn-sm btn-link">Editar</a>
+                            <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
+                            {% if complementaria|length > 1 and not loop.last %}
+                                <hr>
+                            {% endif %}
+                        {% else %}
+                            <h6>Aún no has añadido ninguna experiencia profesional. <a href="{{ path('add_laboral') }}">Añadir</a></h6>
+                        {% endfor %}
+                    </div>
+                </div>
 
-                    <a href="#" class="btn btn-sm btn-link">Editar</a>
-                    <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
-                    <div class="clearfix"></div>
-                    <hr>
-                {% else %}
-                    <h6>Aún no has añadido ningún idioma. <a href="{{ path('add_idioma') }}">Añadir</a></h6>
-                    <hr>
-                {% endfor %}
+                <div class="box-default">
+                    <div class="card-header">
+                        <h5 class="card-title title-box-default">Idiomas <small><a href="{{ path('add_idioma') }}" class="text-success float-lg-right"><i class="fas fa-plus"></i></a></small></h5>
+                    </div>
+                    <div class="card-body">
+                        {% for idio in idioma %}
+                            <h6 class="lb-idioma text-center">{{ idio.idioma }}</h6>
+                            <div class="float-md-right">
+                                <small class="row">Nivel {{ idio.habla }} oral</small>
+                                <small class="row">Nivel {{ idio.escribe }} de escritura</small>
+                                <small class="row">Nivel {{ idio.traduce }} de traduccion</small>
+                            </div>
+
+                            <a href="#" class="btn btn-sm btn-link">Editar</a>
+                            <a href="#" class="btn btn-sm btn-link text-danger">Eliminar</a>
+                            <div class="clearfix"></div>
+                            {% if complementaria|length > 1 and not loop.last %}
+                                <hr>
+                            {% endif %}
+                        {% else %}
+                            <h6>Aún no has añadido ningún idioma. <a href="{{ path('add_idioma') }}">Añadir</a></h6>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-4 col-md-push-4 box-recomendaciones">

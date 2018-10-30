@@ -12,41 +12,59 @@
 {% endif %}
 
 <div id="login">
-    <h3 class="text-center text-white pt-5">Tenzo <small>Jobs</small></h3>
-    <div class="container">
-        <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6">
-                <div id="login-box" class="col-md-12">
-                    <form action="{{ path("fos_user_security_check") }}" method="post" class="form" id="login-form">
-                        {% if csrf_token %}
-                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                        {% endif %}
-                        <h3 class="text-center text-info">Entrar</h3>
-                        <div class="form-group">
-                            <input type="text" class="login-field form-control" id="username" name="_username" placeholder="Correo electronico" value="{{ last_username }}" required="required" />
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="password" name="_password" class="login-field form-control" value="" placeholder="Contraseña" required="required" />
-                        </div>
-                        <div class="form-group row">
-                            <label for="remember-me" class="text-info">
-                                <span>Recordarme</span> 
-                                <span>
-                                    <input type="checkbox" class="ckbox" id="remember_me" name="_remember_me" value="on" style="width: 25px;" />
-                                </span>
-                            </label>
-                            <div class="col-md-6"></div>
-                            <button class="btn btn-primary btn-large" id="_submit" name="_submit">
-                                {{ 'security.login.submit'|trans }}
-                            </button>
-                        </div>
-                    </form>
-                    <hr>
-                    <span class="text-center span-registro">¿Aún no estás registrado?</span>
-                    <a href="{{ path('fos_user_registration_register') }}" class="btn btn-info btn-large btn-block">Crea una cuenta hoy mismo</a>
-                </div>
+    <h3 class="text-center text-white">Tenzo <small>Jobs</small></h3>
+    <div class="container row">
+        <div class="col">
+            <div class="container pt-5 mt-5">
+                <h3 class="text-center text-white title">¿Eres una empresa?</h3>
+                <hr>
+                <h6 class="text-center text-white">
+                    Ahora REGíSTRATE GRATIS como empresa y publica ofertas de empleo para los trabajadores
+                    ¿A qué estás esperando?
+                </h6>
+                <h4 class="text-center">
+                    <a href="#" class="btn btn-link text-white">
+                        Registra tu empresa
+                    </a>
+                </h4>
 
             </div>
         </div>
+        <div class="col">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-8">
+                    <div id="login-box" class="col-md-12">
+                        <form action="{{ path("fos_user_security_check") }}" method="post" class="form" id="login-form">
+                            {% if csrf_token %}
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                            {% endif %}
+                            <h3 class="text-center text-info">Entrar</h3>
+                            <div class="form-group">
+                                <input type="text" class="login-field form-control" id="username" name="_username" placeholder="Correo electronico" value="{{ last_username }}" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="password" name="_password" class="login-field form-control" value="" placeholder="Contraseña" required="required" />
+                            </div>
+                            <div class="form-group row">
+                                <label for="remember-me" class="text-info">
+                                    <span>Recordarme</span> 
+                                    <span>
+                                    <input type="checkbox" class="ckbox" id="remember_me" name="_remember_me" value="on" style="width: 25px;" />
+                                </span>
+                                </label>
+                                <div class="col-md-4"></div>
+                                <button class="btn btn-primary btn-large" id="_submit" name="_submit">
+                                    {{ 'security.login.submit'|trans }}
+                                </button>
+                            </div>
+                        </form>
+                        <hr>
+                        <span class="text-center span-registro">¿Aún no estás registrado?</span>
+                        <a href="{{ path('fos_user_registration_register') }}" class="btn btn-info btn-large btn-block">Crea una cuenta hoy mismo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

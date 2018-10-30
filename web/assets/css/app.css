@@ -1,15 +1,20 @@
 html, body{
     height: 100%;
+    background: #F5F5F5;
 }
 
 .box-default{
     background: #FEFEFE;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-    padding: 0 20px 20px;
-    margin: 0 auto;
+    margin: 15px auto;
     float: none;
     border-radius: 3px;
     white-space: normal;
+}
+
+.title-box-default{
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 select {
@@ -35,10 +40,6 @@ select {
     width: 350px;
 }
 
-.content-user{
-    margin-top: 56px;
-}
-
 .avatar{
     background: #FFFFFF;
     border-radius: 50%;
@@ -46,6 +47,11 @@ select {
     height: 100px;
     overflow: hidden;
     float: left;
+}
+
+.avatar img{
+    height: 100%;
+    text-align: center;
 }
 
 .flex-parent{
@@ -62,10 +68,6 @@ select {
     flex-direction: column;
 }
 
-.avatar img{
-    height: 100%;
-    text-align: center;
-}
 .name-user{
     font-size: 23px;
     margin-top: 10px;
@@ -82,10 +84,6 @@ select {
     margin-left: 10px;
 }
 
-.box-info{
-    margin-top: 100px;
-}
-
 .check-confirmed{
     color: #00e676;
     font-size: 20px;
@@ -99,3 +97,97 @@ select {
 .box-recomendaciones{
     border-left: 1px solid dimgrey;
 }
+
+
+.pt-6{
+    padding-top: 5rem !important;
+}
+
+/* PERFIL */
+.perfil-title{
+    font-weight: bold;
+    font-family: Tahoma;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #111111;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 2px solid cadetblue;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: transparent;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    color: #111 !important;
+}
+
+.nav-link {
+    display: block;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.nav-tabs, .nav-link{
+    color: #777777;
+}
+
+.content-img{
+    padding-top: 30px;
+}
+
+.perfil-img{
+    position: relative;
+    width: 80%;
+}
+
+.perfil-img:before{
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.content-img>.perfil-img>.avatar>img{
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+    border-radius: 50%;
+}
+
+
+.perfil-img>.avatar{
+    width: 75%;
+    height: 75%;
+    box-sizing:border-box;
+}
+
+.perfil-nombre>h2{
+    font-weight: bold;
+}
+
+.change-img-link{
+    display: block;
+    text-align: center;
+    width: 80%;
+}
+
+.perfil-data-list{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.perfil-data-list>li{
+    padding: 15px 0;
+}
+
+.list-data-item{
+    cursor: text !important;
+}
+
+
